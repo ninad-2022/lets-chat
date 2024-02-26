@@ -1,10 +1,8 @@
-const express = require("express");
-const dotEnv = require("dotenv");
-const cors = require("cors");
-const os = require("os");
-const routes = require("./src/routes/index.js");
-const mysqldb = require("./src/database/mysql/index.js");
-const cluster = require("cluster");
+import express from "express";
+import dotEnv from "dotenv";
+import cors from "cors";
+import routes from "./src/routes/index.js";
+import mysqldb from "./src/database/mysql/index.js";
 class App {
     constructor() {
         dotEnv.config();
@@ -19,7 +17,7 @@ class App {
             .then((app) => {
                 return this.configureHandlers(app);
             })
-            .then((app) => {
+                        .then((app) => {
                 return this.startServer(app);
             })
             .catch((err) => {
@@ -39,29 +37,6 @@ class App {
     };
 
     startServer(server) {
-        const { CLUSTER_MODE } = process.env;
-
-        if (CLUSTER_MODE == `true ` && cluster.isPrimary) {
-            return this.startMasterCluster();
-        } else {
-            return this.startWorkerServer(server);
-        }
-    }
-
-    startMasterCluster() {
-        const numCPUs = os.cpus().length;
-        console.log(`Master ${process.pid} is running`);
-
-        for (let i = 0; i < numCPUs; i++) {
-            cluster.fork();
-        }
-
-        cluster.on('exit', (worker, code, signal) => {
-            console.log(`Worker ${worker.process.pid} died`);
-        });
-    }
-
-    startWorkerServer(server) {
         const { PORT } = process.env;
         server.listen(PORT, () => {
             console.log(`Worker ${process.pid} is running on [ http://localhost:${PORT} / ]`);
@@ -90,4 +65,4 @@ class App {
     }
 }
 
-module.exports = new App;
+export default new App;

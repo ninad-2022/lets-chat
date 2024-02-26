@@ -1,7 +1,7 @@
-const Sequelize = require("sequelize");
-const dotEnv = require("dotenv");
-const mysql2 = require("mysql2");
-const UserModel = require("./models/user.js");
+import Sequelize from "sequelize";
+import dotEnv from "dotenv";
+import mysql2 from "mysql2";
+import UserModel from "./models/user.js";
 
 class DbConn {
     constructor() {
@@ -36,4 +36,4 @@ class DbConn {
         return attemptConnection();
     };
 }
-module.exports = new DbConn;
+export default new DbConn;
