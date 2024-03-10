@@ -28,159 +28,161 @@ const Login = () => {
     setProfilePicture(URL.createObjectURL(e.target.files[0]));
   };
   return (
-    <div style={{backgroundImage:"linear-gradient(rgb(255 255 209), rgb(249 159 159))"}}>
-
-    <Container
-      component={"main"}
-      maxWidth="xs"
-      sx={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+    <div
+      style={{
+        backgroundImage: "linear-gradient(rgb(255 255 209), rgb(249 159 159))",
       }}
     >
-      <Paper
-        elevation={3}
+      <Container
+        component={"main"}
+        maxWidth="xs"
         sx={{
-          padding: 4,
+          height: "100vh",
           display: "flex",
-          flexDirection: "column",
+          justifyContent: "center",
           alignItems: "center",
         }}
       >
-        {isLogin ? (
-          <>
-            <Typography variant="h5">Login</Typography>
-            <form
-              style={{ width: "100%", marginTop: "1rem" }}
-              onSubmit={handleLoginSubmit}
-            >
-              <TextField
-                required
-                fullWidth
-                label="username"
-                name="username"
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                required
-                fullWidth
-                label="password"
-                name="password"
-                margin="normal"
-                variant="outlined"
-              />
-              <Button
-                sx={{ marginTop: "1rem" }}
-                variant="contained"
-                color="primary"
-                type="submit"
+        <Paper
+          elevation={3}
+          sx={{
+            padding: 4,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          {isLogin ? (
+            <>
+              <Typography variant="h5">Login</Typography>
+              <form
+                style={{ width: "100%", marginTop: "1rem" }}
+                onSubmit={handleLoginSubmit}
               >
-                Login
-              </Button>
-              <Typography textAlign={"center"} m={"1rem"}>
-                OR
-              </Typography>
-              <Button
-                sx={{ marginTop: "1rem" }}
-                variant="text"
-                fullWidth
-                onClick={handleLoginRegister}
-              >
-                Sign Up
-              </Button>
-            </form>
-          </>
-        ) : (
-          <>
-            <Typography variant="h5">Sign Up</Typography>
-            <form style={{ width: "100%", marginTop: "1rem" }}>
-              <Stack position={"relative"} width={"8rem"} margin={"auto"}>
-                <Avatar
-                  name="profilePicture"
-                  sx={{ width: "8rem", height: "8rem", objectFit: "contain" }}
-                  src={profilePicture}
+                <TextField
+                  required
+                  fullWidth
+                  label="username"
+                  name="username"
+                  margin="normal"
+                  variant="outlined"
                 />
-                <IconButton
-                  sx={{
-                    position: "absolute",
-                    right: "0",
-                    bottom: "0",
-                    bgcolor: "rgba(0,0,0,0.3)",
-                    ":hover": {
-                      bgColor: "rgba(0,0,0,0.7)",
-                    },
-                  }}
-                  component="label"
+                <TextField
+                  required
+                  fullWidth
+                  label="password"
+                  name="password"
+                  margin="normal"
+                  variant="outlined"
+                />
+                <Button
+                  sx={{ marginTop: "1rem" }}
+                  variant="contained"
+                  color="primary"
+                  type="submit"
                 >
-                  <>
-                    <CameraAltIcon />
-                    <VisuallyHiddenInput
-                      type="file"
-                      onChange={handleFileChange}
-                    />
-                  </>
-                </IconButton>
-              </Stack>
-              <TextField
-                required
-                fullWidth
-                label="Email"
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                required
-                fullWidth
-                label="Bio"
-                margin="normal"
-                variant="outlined"
-              />
-              <div style={{ display: "flex", gap: 10 }}>
+                  Login
+                </Button>
+                <Typography textAlign={"center"} m={"1rem"}>
+                  OR
+                </Typography>
+                <Button
+                  sx={{ marginTop: "1rem" }}
+                  variant="text"
+                  fullWidth
+                  onClick={handleLoginRegister}
+                >
+                  Sign Up
+                </Button>
+              </form>
+            </>
+          ) : (
+            <>
+              <Typography variant="h5">Sign Up</Typography>
+              <form style={{ width: "100%", marginTop: "1rem" }}>
+                <Stack position={"relative"} width={"8rem"} margin={"auto"}>
+                  <Avatar
+                    name="profilePicture"
+                    sx={{ width: "8rem", height: "8rem", objectFit: "contain" }}
+                    src={profilePicture}
+                  />
+                  <IconButton
+                    sx={{
+                      position: "absolute",
+                      right: "0",
+                      bottom: "0",
+                      bgcolor: "rgba(0,0,0,0.3)",
+                      ":hover": {
+                        bgColor: "rgba(0,0,0,0.7)",
+                      },
+                    }}
+                    component="label"
+                  >
+                    <>
+                      <CameraAltIcon />
+                      <VisuallyHiddenInput
+                        type="file"
+                        onChange={handleFileChange}
+                      />
+                    </>
+                  </IconButton>
+                </Stack>
                 <TextField
                   required
                   fullWidth
-                  label="Username"
+                  label="Email"
                   margin="normal"
                   variant="outlined"
                 />
                 <TextField
                   required
                   fullWidth
-                  label="Password"
+                  label="Bio"
                   margin="normal"
                   variant="outlined"
                 />
-              </div>
+                <div style={{ display: "flex", gap: 10 }}>
+                  <TextField
+                    required
+                    fullWidth
+                    label="Username"
+                    margin="normal"
+                    variant="outlined"
+                  />
+                  <TextField
+                    required
+                    fullWidth
+                    label="Password"
+                    margin="normal"
+                    variant="outlined"
+                  />
+                </div>
 
-              <Button
-                sx={{ marginTop: "1rem" }}
-                variant="contained"
-                color="primary"
-                type="submit"
-              >
-                Sign Up
-              </Button>
-              <Typography textAlign={"center"} m={"1rem"}>
-                OR
-              </Typography>
-              <Button
-                sx={{ marginTop: "1rem" }}
-                variant="text"
-                fullWidth
-                onClick={handleLoginRegister}
-              >
-                Login
-              </Button>
-            </form>
-          </>
-        )}
-      </Paper>
-    </Container>
+                <Button
+                  sx={{ marginTop: "1rem" }}
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                >
+                  Sign Up
+                </Button>
+                <Typography textAlign={"center"} m={"1rem"}>
+                  OR
+                </Typography>
+                <Button
+                  sx={{ marginTop: "1rem" }}
+                  variant="text"
+                  fullWidth
+                  onClick={handleLoginRegister}
+                >
+                  Login
+                </Button>
+              </form>
+            </>
+          )}
+        </Paper>
+      </Container>
     </div>
-
   );
 };
 
